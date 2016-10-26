@@ -16,7 +16,7 @@ const User = require("./models/user");
 
 function generateOrFindUser(accessToken, refreshToken, profile, done) {
   if (profile.emails[0]) {
-    User.findOneAndUpdate({ email: profile.emails[0] }, {
+    User.findOneAndUpdate({ email: profile.emails[0].value }, {
         name: profile.displayName || profile.username,
         email: profile.emails[0].value,
         photo: profile.photos[0].value
